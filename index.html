@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control LED ESP32</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .on {
+            background-color: green;
+            color: white;
+        }
+        .off {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Control de LED con ESP32</h1>
+    <button class="on" onclick="controlLed('ON')">Encender LED</button>
+    <button class="off" onclick="controlLed('OFF')">Apagar LED</button>
+
+    <script>
+        function controlLed(estado) {
+            fetch(`http://TU_IP_DEL_ESP32/LED=${estado}`)
+                .then(response => console.log("Solicitud enviada:", response))
+                .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>
